@@ -99,9 +99,6 @@ class SFGCN(nn.Module):
     def __init__(self, concat,nfeat,  nhid,nclass, numlayers,  dropout):
         super(SFGCN, self).__init__()
 
-        # self.SGCN1 = gcn_air1(6,nfeat, nhid1, nhid2,dropout=dropout ,num_hops=6)
-        # self.SGCN2 = gcn_air1(6,nfeat, nhid1, nhid2,dropout=dropout, num_hops=6)
-        # self.CGCN = gcn_air1(6,nfeat, nhid1, nhid2, dropout=dropout,num_hops=6)
         self.SGCN1 = LAGCN1(concat,nfeat, nhid,nclass,numlayers,dropout=dropout )
         self.SGCN2 = LAGCN1(concat,nfeat, nhid,nclass,numlayers,dropout=dropout)
         self.CGCN = LAGCN1(concat,nfeat, nhid, nclass, numlayers,dropout=dropout)
